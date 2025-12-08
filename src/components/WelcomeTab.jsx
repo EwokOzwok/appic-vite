@@ -2,17 +2,34 @@ import { useState, useEffect } from 'react';
 import { Coffee, Sparkles, Download, AlertCircle, X } from 'lucide-react';
 import axios from 'axios';
 
-const WelcomeTab = ({ appicData, recommendations, setRecommendations }) => {
-  const [programType, setProgramType] = useState('');
-  const [degreeType, setDegreeType] = useState('');
-  const [siteType, setSiteType] = useState('');
-  const [selectedSites, setSelectedSites] = useState([]);
+const WelcomeTab = ({ 
+  appicData,
+  recommendations,
+  setRecommendations,
+  programType,
+  setProgramType,
+  degreeType,
+  setDegreeType,
+  siteType,
+  setSiteType,
+  selectedSites,
+  setSelectedSites,
+  includeUserRecs,
+  setIncludeUserRecs,
+  showRecommendations,
+  setShowRecommendations
+
+  }) => {
+  // const [programType, setProgramType] = useState('');
+  // const [degreeType, setDegreeType] = useState('');
+  // const [siteType, setSiteType] = useState('');
+  // const [selectedSites, setSelectedSites] = useState([]);
   const [filteredSites, setFilteredSites] = useState([]);
-  const [includeUserRecs, setIncludeUserRecs] = useState(false);
+  // const [includeUserRecs, setIncludeUserRecs] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-  const [showRecommendations, setShowRecommendations] = useState(false);
+  // const [showRecommendations, setShowRecommendations] = useState(false);
 
 
   // Detect the correct site name column

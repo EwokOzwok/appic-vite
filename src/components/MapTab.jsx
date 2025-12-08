@@ -11,7 +11,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png'
 });
 
-const MapTab = ({ appicGeoData, recommendations }) => {
+const MapTab = ({ appicGeoData, recommendations, showRecommendations }) => {
   const [showOnlyRecommended, setShowOnlyRecommended] = useState(false);
   const [markersData, setMarkersData] = useState([]);
   
@@ -98,7 +98,7 @@ const MapTab = ({ appicGeoData, recommendations }) => {
             APPIC Site Map
           </h2>
 
-          {recommendations && (
+          {recommendations && showRecommendations && (
             <label className="flex items-center gap-3 cursor-pointer">
               <input
                 type="checkbox"

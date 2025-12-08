@@ -11,6 +11,13 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [recommendations, setRecommendations] = useState(null);
 
+  const [programType, setProgramType] = useState('');
+  const [degreeType, setDegreeType] = useState('');
+  const [siteType, setSiteType] = useState('');
+  const [selectedSites, setSelectedSites] = useState([]);
+  const [includeUserRecs, setIncludeUserRecs] = useState(false);
+  const [showRecommendations, setShowRecommendations] = useState(false);
+
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -96,12 +103,26 @@ function App() {
             appicData={appicData}
             recommendations={recommendations}
             setRecommendations={setRecommendations}
+            programType={programType}
+            setProgramType={setProgramType}
+            degreeType={degreeType}
+            setDegreeType={setDegreeType}
+            siteType={siteType}
+            setSiteType={setSiteType}
+            selectedSites={selectedSites}
+            setSelectedSites={setSelectedSites}
+            includeUserRecs={includeUserRecs}
+            setIncludeUserRecs={setIncludeUserRecs}
+            showRecommendations={showRecommendations}
+            setShowRecommendations={setShowRecommendations}
           />
         )}
         {activeTab === 'map' && (
           <MapTab
             appicGeoData={appicGeoData}
             recommendations={recommendations}
+            showRecommendations={showRecommendations}
+            setShowRecommendations={setShowRecommendations}
           />
         )}
       </main>
