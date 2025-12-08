@@ -1,0 +1,5 @@
+# Build the Docker image
+docker build -t appic-vite:v1 .
+
+# Run the container
+docker run -d --restart=always -p 3016:80 --name APPIC_Recommender appic-vite:v1
