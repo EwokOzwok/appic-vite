@@ -179,18 +179,26 @@ const WelcomeTab = ({
             and recommend the top 10 internship sites that best match your criteria.
           </p>
           
-          {/* Coffee Button */}
-          <div className="pt-4">
-            <p className="text-gray-400 mb-3">Found this helpful? Consider buying me a coffee!</p>
-            <a
-              href="https://www.buymeacoffee.com/Ewokozwok"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-semibold px-6 py-3 rounded-xl transition-all transform hover:scale-105 shadow-lg"
-            >
-              <Coffee size={20} />
-              Buy Me A Coffee
-            </a>
+          {/* Sponsorship Message */}
+          <div className="pt-6 space-y-4">
+            <p className="text-gray-300 text-sm">
+              🎓 <strong>Free for All Doctoral Students</strong> — Made possible by our sponsor
+            </p>
+            
+            {/* Banner Ad */}
+            <div className="max-w-3xl mx-auto -m-4"> {/* Negative margin to pull content out */}
+              <iframe 
+                src="/CF_Banner_Ad.html"
+                className="w-full border-0 rounded-xl overflow-hidden"
+                style={{ 
+                  minHeight: '280px',
+                  display: 'block',
+                  background: 'transparent'
+                }}
+                title="CliniciansFirst Sponsorship"
+                scrolling="no"
+              />
+            </div>
           </div>
         </div>
       </div>

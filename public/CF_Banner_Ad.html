@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APPIC Recommender - Sponsored by CliniciansFirst</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: transparent;  /* ← Changed */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: auto;  /* ← Changed */
+            padding: 0;  /* ← Changed - this removes the white space */
+            margin: 0;
+        }
+
+        .banner-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            width: 100%;
+            max-width: 728px;
+            cursor: pointer;
+        }
+
+        .banner-container {
+            width: 100%;
+            background: linear-gradient(106deg, #2B6CB0 0%, #265E9A 100%);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .banner-link:hover .banner-container {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Animated background pattern */
+        .banner-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Decorative gradient overlay */
+        .banner-container::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, 20px); }
+        }
+
+        .left-section {
+            flex: 1;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .sponsor-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: fadeIn 0.8s ease-out 0.3s backwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sponsor-badge .sparkle {
+            display: inline-block;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.3) rotate(180deg); opacity: 0.8; }
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            animation: fadeIn 0.8s ease-out 0.5s backwards;
+        }
+
+        .logo {
+            height: 36px;
+            width: auto;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .headline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.3;
+            margin-bottom: 8px;
+            animation: fadeIn 0.8s ease-out 0.7s backwards;
+        }
+
+        .subheadline {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.5;
+            margin-bottom: 4px;
+            animation: fadeIn 0.8s ease-out 0.9s backwards;
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .right-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ffffff;
+            color: #2B6CB0;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            animation: fadeIn 0.8s ease-out 1.1s backwards, pulse-cta 2s ease-in-out 2s infinite;
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes pulse-cta {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+            background: #f0f8ff;
+        }
+
+        .cta-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover .cta-arrow {
+            transform: translateX(4px);
+        }
+
+        .trial-badge {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            animation: fadeIn 0.8s ease-out 1.3s backwards;
+        }
+
+        .trust-indicators {
+            display: flex;
+            gap: 12px;
+            margin-top: 6px;
+            animation: fadeIn 0.8s ease-out 1.5s backwards;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 600;
+        }
+
+        .trust-icon {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 640px) {
+            .banner-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .left-section {
+                margin-bottom: 20px;
+            }
+
+            .logo-container {
+                justify-content: center;
+            }
+
+            .headline {
+                font-size: 18px;
+            }
+
+            .subheadline {
+                font-size: 12px;
+            }
+
+            .cta-button {
+                font-size: 14px;
+                padding: 12px 24px;
+            }
+
+            .sponsor-badge {
+                justify-content: center;
+            }
+        }
+
+        /* Shimmer effect for logo */
+        @keyframes shimmer {
+            0% { 
+                filter: brightness(1);
+            }
+            50% { 
+                filter: brightness(1.2) drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+            }
+            100% { 
+                filter: brightness(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="https://www.cliniciansfirst.org" target="_blank" rel="noopener noreferrer" class="banner-link">
+        <div class="banner-container">
+            <div class="banner-content">
+                <div class="left-section">
+                    <div class="sponsor-badge">
+                        <span class="sparkle">✨</span>
+                        <span>APPIC Recommender Sponsored by</span>
+                    </div>
+                    
+                    <div class="logo-container">
+                        <img src="https://cliniciansfirst.org/wp-content/uploads/2025/06/cropped-site_icon.png" alt="CliniciansFirst Logo" class="logo">
+                        <span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; color: #ffffff;">CliniciansFirst</span>
+                    </div>
+
+                    <h1 class="headline">
+                        Ethical AI Note Generation<br>
+                        for Internship & Beyond
+                    </h1>
+                    
+                    <p class="subheadline">
+                        <span class="highlight">APA Code-Aligned</span> AI note & assessment reports.<br>
+                        Built by psychologists, for psychologists.
+                    </p>
+
+                    <div class="trust-indicators">
+                        <div class="trust-badge">
+                            <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                            Beyond HIPAA
+                        </div>
+                        <div class="trust-badge">
+                            <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            APA Ethics
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-section">
+                    <div class="cta-button" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://ng.cliniciansfirst.org/create-account', '_blank');">
+                        Start Free Trial
+                        <span class="cta-arrow">→</span>
+                    </div>
+                    <div class="trial-badge">
+                        30 Days Free • No Credit Card
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</body>
+</html>
