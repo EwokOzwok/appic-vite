@@ -172,7 +172,7 @@ const WelcomeTab = ({
       <div className="glass rounded-2xl p-8 shadow-2xl">
         <div className="text-center space-y-4">
           <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Find Your Perfect APPIC Internship Site
+            Find Your Perfect APPIC Internship Sites
           </h2>
           <p className="text-gray-300 text-lg max-w-3xl mx-auto">
             The APPIC Site Recommender uses advanced algorithms to analyze your preferred sites 
