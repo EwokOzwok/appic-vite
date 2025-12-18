@@ -1,3 +1,43 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>APPIC Recommender - Sponsored by CliniciansFirst</title> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="prec
+
+pasted
+
+How can I include "User code INTERN for 50% off your first 6-months" in a way that is not visually jarring and also don't off-set that a credit card is NOT required for a 30-day trial.
+
+2:05 PM
+I'll help you integrate the promo code information in a way that's visually cohesive and maintains the "no credit card" messaging. Let me create an updated version:
+
+
+1 step
+
+Copying the updated banner to outputs for user access
+
+
+
+Presented file
+I've updated the banner with the promo code integrated in a visually cohesive way. Here are the key changes:
+
+What I did:
+
+Added the promo code below the trial badge - It's styled with a subtle glass-morphism effect that matches the existing design language
+Kept the messaging clear - "30 Days Free • No Credit Card" remains prominent, with the promo code as a secondary benefit below it
+Made the code stand out subtly - "INTERN" is bold and letter-spaced, but the overall styling is gentle and not jarring
+Grouped related info - Created a .trial-info container that holds both the trial details and promo code together
+The promo code appears as: "Use code INTERN for 50% off 6 months" in a pill-shaped badge with a frosted glass effect that complements the sponsor badge at the top.
+
+Updated banner
+Code · HTML 
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+
+
+Updated banner · HTML
+Copy
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,12 +56,12 @@
 
         body {
             font-family: 'Source Sans Pro', sans-serif;
-            background: transparent;  /* ← Changed */
+            background: transparent;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: auto;  /* ← Changed */
-            padding: 0;  /* ← Changed - this removes the white space */
+            min-height: auto;
+            padding: 0;
             margin: 0;
         }
 
@@ -242,11 +282,38 @@
             transform: translateX(4px);
         }
 
+        .trial-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            animation: fadeIn 0.8s ease-out 1.3s backwards;
+        }
+
         .trial-badge {
             font-size: 11px;
             color: rgba(255, 255, 255, 0.9);
             font-weight: 600;
-            animation: fadeIn 0.8s ease-out 1.3s backwards;
+        }
+
+        .promo-code {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .promo-code-value {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.5px;
         }
 
         .trust-indicators {
@@ -364,8 +431,15 @@
                         Start Free Trial
                         <span class="cta-arrow">→</span>
                     </div>
-                    <div class="trial-badge">
-                        30 Days Free • No Credit Card
+                    <div class="trial-info">
+                        <div class="trial-badge">
+                            30 Days Free • No Credit Card
+                        </div>
+                        <div class="promo-code">
+                            <span>Use code</span>
+                            <span class="promo-code-value">INTERN</span>
+                            <span>for 50% off 6 months</span>
+                        </div>
                     </div>
                 </div>
             </div>
