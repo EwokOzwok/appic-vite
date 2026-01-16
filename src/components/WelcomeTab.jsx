@@ -20,17 +20,10 @@ const WelcomeTab = ({
   setShowRecommendations
 
   }) => {
-  // const [programType, setProgramType] = useState('');
-  // const [degreeType, setDegreeType] = useState('');
-  // const [siteType, setSiteType] = useState('');
-  // const [selectedSites, setSelectedSites] = useState([]);
   const [filteredSites, setFilteredSites] = useState([]);
-  // const [includeUserRecs, setIncludeUserRecs] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-  // const [showRecommendations, setShowRecommendations] = useState(false);
-
 
   // Detect the correct site name column
   const getSiteNameColumn = () => {
