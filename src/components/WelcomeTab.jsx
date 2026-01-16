@@ -25,6 +25,20 @@ const WelcomeTab = ({
   const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Initialize Google Tag Manager
+  useEffect(() => {
+    // GTM initialization
+    if (!window.dataLayer) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+      
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-K9W5NBKN';
+      document.head.appendChild(script);
+    }
+  }, []);
+
   // Detect the correct site name column
   const getSiteNameColumn = () => {
     if (appicData.length === 0) return null;
@@ -161,6 +175,16 @@ const WelcomeTab = ({
 
   return (
     <div className="space-y-6 fade-in">
+      {/* Google Tag Manager noscript */}
+      <noscript>
+        <iframe 
+          src="https://www.googletagmanager.com/ns.html?id=GTM-K9W5NBKN"
+          height="0" 
+          width="0" 
+          style={{ display: 'none', visibility: 'hidden' }}
+        />
+      </noscript>
+
       {/* Hero Card */}
       <div className="glass rounded-2xl p-8 shadow-2xl">
         <div className="text-center space-y-4">
@@ -178,19 +202,103 @@ const WelcomeTab = ({
               🎓 <strong>Free for All Doctoral Students</strong> — Made possible by our sponsor
             </p>
             
-            {/* Banner Ad */}
-            <div className="max-w-3xl mx-auto -m-4"> {/* Negative margin to pull content out */}
-              <iframe 
-                src="/CF_Banner_Ad.html"
-                className="w-full border-0 rounded-xl overflow-hidden"
-                style={{ 
-                  minHeight: '280px',
-                  display: 'block',
-                  background: 'transparent'
+            {/* Banner Ad - Direct HTML */}
+            <div className="max-w-3xl mx-auto">
+              <a 
+                href="https://www.cliniciansfirst.org" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="block no-underline w-full max-w-[728px] mx-auto cursor-pointer"
+                onClick={() => {
+                  // Google Tag Manager tracking
+                  if (window.dataLayer) {
+                    window.dataLayer.push({
+                      'event': 'banner_click',
+                      'banner_name': 'CliniciansFirst'
+                    });
+                  }
                 }}
-                title="CliniciansFirst Sponsorship"
-                scrolling="no"
-              />
+              >
+                <div className="w-full bg-gradient-to-r from-[#2B6CB0] to-[#265E9A] rounded-xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.15)] relative transition-all duration-300 hover:transform hover:-translate-y-0.5 hover:shadow-[0_15px_50px_rgba(0,0,0,0.25)]">
+                  <div className="flex items-center justify-between p-5 md:p-[20px_30px] relative z-[2] flex-col md:flex-row text-center md:text-left">
+                    {/* Left Section */}
+                    <div className="flex-1 mb-5 md:mb-0">
+                      <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-[10px] px-3.5 py-1.5 rounded-[20px] text-[11px] font-semibold text-white uppercase tracking-wide mb-3 border border-white/30">
+                        <span className="inline-block">✨</span>
+                        <span>APPIC Recommender Sponsored by</span>
+                      </div>
+                      
+                      <div className="flex items-center gap-3 mb-2.5 justify-center md:justify-start">
+                        <img 
+                          src="https://cliniciansfirst.org/wp-content/uploads/2025/06/cropped-site_icon.png" 
+                          alt="CliniciansFirst Logo" 
+                          className="h-9 w-auto"
+                        />
+                        <span className="font-bold text-base text-white" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                          CliniciansFirst
+                        </span>
+                      </div>
+
+                      <h1 className="text-xl font-bold text-white leading-[1.3] mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                        Ethical AI Note Generation<br/>
+                        for Internship & Beyond
+                      </h1>
+                      
+                      <p className="text-[13px] text-white/95 leading-[1.5] mb-1">
+                        <span className="font-semibold text-white">APA Code-Aligned</span> AI note & assessment reports.<br/>
+                        Built by psychologists, for psychologists.
+                      </p>
+
+                      <div className="flex gap-3 mt-1.5 justify-center md:justify-start">
+                        <div className="flex items-center gap-1 text-[10px] text-white/85 font-semibold">
+                          <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                          </svg>
+                          Beyond HIPAA
+                        </div>
+                        <div className="flex items-center gap-1 text-[10px] text-white/85 font-semibold">
+                          <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                          </svg>
+                          APA Ethics
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right Section */}
+                    <div className="flex flex-col items-center gap-2.5">
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          window.open('https://ng.cliniciansfirst.org/create-account', '_blank');
+                        }}
+                        className="inline-flex items-center gap-2 bg-white text-[#2B6CB0] px-7 py-3.5 rounded-[50px] text-base font-bold shadow-[0_4px_20px_rgba(0,0,0,0.15)] transition-all duration-300 hover:transform hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_6px_25px_rgba(0,0,0,0.25)] hover:bg-[#f0f8ff]"
+                        style={{ fontFamily: "'Montserrat', sans-serif" }}
+                      >
+                        Start Free Trial
+                        <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                      </button>
+                      <div className="flex flex-col items-center gap-1">
+                        <div className="text-[11px] text-white/90 font-semibold">
+                          30 Days Free • No Credit Card
+                        </div>
+                        <div className="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-[10px] px-2.5 py-1 rounded-xl text-[10px] text-white/95 border border-white/25">
+                          <span>Use code</span>
+                          <span className="font-bold text-white tracking-wide" style={{ fontFamily: "'Montserrat', sans-serif" }}>INTERN</span>
+                          <span>for 50% off 6 months</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Animated background elements */}
+                  <div className="absolute inset-0 z-[1] opacity-50 animate-pulse" style={{
+                    background: 'radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%)',
+                    animationDuration: '8s'
+                  }}/>
+                </div>
+              </a>
             </div>
           </div>
         </div>
