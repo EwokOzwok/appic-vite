@@ -22,8 +22,8 @@ function App() {
     const loadData = async () => {
       try {
         const [appic, appicGeo] = await Promise.all([
-          parseCSV('/data/appic.csv'),
-          parseCSV('/data/appicgeo.csv')
+          parseCSV('/data/appic_2026.csv'),
+          parseCSV('/data/appicgeo_2026.csv')
         ]);
         
         setAppicData(appic);
