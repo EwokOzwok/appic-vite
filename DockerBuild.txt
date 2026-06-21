@@ -14,4 +14,5 @@ docker build -t appic-vite:v1 .
 docker tag appic-vite:v1 eeozmat/appic-vite:v1
 docker push eeozmat/appic-vite:v1
 
+docker pull eeozmat/appic-vite:v1
 docker run -d --restart=always -p 3016:80 -v /home/ewok/Desktop/APPIC:/app/data --name APPIC_Recommender eeozmat/appic-vite:v1
