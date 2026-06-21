@@ -29,8 +29,9 @@ COPY appic_clean_2026.csv /app/api/appic_clean_2026.csv
 COPY requests_log.csv /app/api/requests_log.csv
 
 # nginx config
-RUN rm /etc/nginx/conf.d/default.conf 2>/dev/null || true
-COPY nginx.conf /etc/nginx/conf.d/app.conf
+RUN rm -f /etc/nginx/sites-enabled/default \
+    && rm -f /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Supervisor config
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
